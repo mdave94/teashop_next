@@ -1,7 +1,49 @@
+"use client";
+import { motion, useInView } from "framer-motion";
+import SocialMediaIcon from "./ui/svg/SocialMediaIcon";
+import { useRef } from "react";
+
 const Footer = () => {
+  const footerRef = useRef(null);
+  const isInView = useInView(footerRef, { once: true });
+
+  const footerVariatns = {
+    hidden: {
+      y: 80,
+    },
+    visible: {
+      y: 0,
+
+      transition: {
+        duration: 0.5,
+      },
+    },
+  };
+
+  const footerRightSideVariants = {
+    hidden: {
+      opacity: 0,
+      y: 30,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: 0.3,
+        duration: 0.6,
+      },
+    },
+  };
+
   return (
     <>
-      <div className="h-[200px] px-8 bg-white flex justify-between items-center ">
+      <motion.div
+        ref={footerRef}
+        variants={footerVariatns}
+        initial="hidden"
+        animate={isInView ? "visible" : "hidden"}
+        className="h-[200px] px-8 bg-white flex justify-between items-center "
+      >
         <div className="text-4xl bg-gray-300 p-2 px-4 rounded-2xl ">
           LogoHolder
         </div>
@@ -24,15 +66,43 @@ const Footer = () => {
           <div className="">Vasárnap 13:00-17:00</div>
         </div>
 
-        <div className="flex flex-col cursor-pointer ml-4 space-y-2 group">
+        <motion.div
+          variants={footerRightSideVariants}
+          className="flex flex-col cursor-pointer ml-4 space-y-2 group"
+        >
           <div className="relative pb-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-blue-500 after:transition-all after:duration-500 hover:after:w-full">
             Felelősséválalási nyilatkozat
           </div>
           <div className="relative pb-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-blue-500 after:transition-all after:duration-500 hover:after:w-full">
             Adatkezelési tájékoztató
           </div>
-        </div>
-      </div>
+        </motion.div>
+
+        <motion.div
+          variants={footerRightSideVariants}
+          className="flex justify-center items-center cursor-pointer "
+        >
+          <motion.div
+            whileHover={{ scale: 1.1 }}
+            transition={{ type: "spring", bounce: 0.7 }}
+          >
+            <SocialMediaIcon name="insta" />
+          </motion.div>
+
+          <motion.div
+            whileHover={{ scale: 1.1 }}
+            transition={{ type: "spring", bounce: 0.7 }}
+          >
+            <SocialMediaIcon name="fb" />
+          </motion.div>
+          <motion.div
+            whileHover={{ scale: 1.1 }}
+            transition={{ type: "spring", bounce: 0.7 }}
+          >
+            <SocialMediaIcon name="tiktok" />
+          </motion.div>
+        </motion.div>
+      </motion.div>
     </>
   );
 };
