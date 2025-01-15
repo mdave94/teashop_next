@@ -4,7 +4,7 @@ import Image from "next/image";
 const Navbar = () => {
   return (
     <>
-      <div className="text-teander cursor-pointer  w-screen h-16 border-b-[1px] border-white">
+      <div className="text-teander cursor-pointer  h-16 border-b-[1px] border-white">
         <div className="flex  w-screen flex-row flex-grow items-center justify-between h-full px-[150px]">
           <motion.div
             className="text-2xl flex flex-row"
