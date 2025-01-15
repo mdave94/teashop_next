@@ -1,6 +1,6 @@
 const FirstComponent = () => {
   return (
-    <div className="text-teander  bg-white h-screen p-2 ">
+    <div className="text-textGray flex flex-row justify-center items-center h-screen p-2 ">
       <h1>First Component</h1>
 
       <p>
