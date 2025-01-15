@@ -12,7 +12,7 @@ const Hero = () => {
       y: 0,
       transition: {
         duration: 1,
-        delay: 0.5 + index * 0.5, // Adjust delay based on index
+        delay: 1 + index * 0.6, // Adjust delay based on index
       },
     },
   });
@@ -32,7 +32,21 @@ const Hero = () => {
     },
   };
 
-  const heroTexts = ["TEA", "ÉLMÉNY", "KÖZÖSSÉG", "TEANDER"];
+  const teanderVariants = {
+    initial: {
+      opacity: 0,
+      y: 20,
+    },
+    animate: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 1.5,
+        delay: 3,
+      },
+    },
+  };
+  const heroTexts = ["TEA", "ÉLMÉNY", "KÖZÖSSÉG"];
 
   return (
     <div className="flex w-screen flex-row flex-grow items-center justify-between  h-screen px-[150px]">
@@ -48,6 +62,15 @@ const Hero = () => {
             {text}
           </motion.div>
         ))}
+        <motion.div
+          className="text-8xl text-teander flex flex-row"
+          style={{ color: "#818181" }}
+          variants={teanderVariants}
+          initial="initial"
+          animate="animate"
+        >
+          TEANDER
+        </motion.div>
       </div>
       <motion.div
         variants={imageVariants}
