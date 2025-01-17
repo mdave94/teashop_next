@@ -42,11 +42,12 @@ const Footer = () => {
         ref={footerRef}
         variants={footerVariatns}
         initial="hidden"
+        style={{ backgroundColor: "#0C0C0C" }}
         animate={isInView ? "visible" : "hidden"}
-        className="h-[200px]  px-8 bg-white flex justify-center items-center "
+        className="h-[200px]  px-8 text-textGray flex justify-center items-center "
       >
-        <div className="gap-14  flex justify-between items-center">
-          <div className="text-4xl bg-gray-300 p-2 px-4 rounded-2xl ">
+        <div className="gap-14  flex justify-between bg-w items-center">
+          <div className="text-4xl  bg-gray-300 p-2 px-4 rounded-2xl ">
             LogoHolder
           </div>
           <div
@@ -61,7 +62,7 @@ const Footer = () => {
             className="flex flex-col ml-4
         "
           >
-            <div className="text-2xl font-bold mb-7">Nyitvatartás</div>
+            <div className="text-2xl  font-bold mb-7">Nyitvatartás</div>
             <div className="">Hétfőn zárva</div>
             <div className="">K-P 12:00-19:00</div>
             <div className="">Szombat 12:00-18:00</div>
@@ -82,26 +83,28 @@ const Footer = () => {
 
           <motion.div
             variants={footerRightSideVariants}
-            className="flex justify-center items-center cursor-pointer "
+            className="flex justify-center items-center cursor-pointer  "
           >
             <motion.div
               whileHover={{ scale: 1.1 }}
+              style={{ margin: "0.1rem" }}
               transition={{ type: "spring", bounce: 0.7 }}
             >
               <SocialMediaIcon name="insta" />
             </motion.div>
-
             <motion.div
               whileHover={{ scale: 1.1 }}
-              transition={{ type: "spring", bounce: 0.7 }}
-            >
-              <SocialMediaIcon name="fb" />
-            </motion.div>
-            <motion.div
-              whileHover={{ scale: 1.1 }}
+              style={{ margin: "0.1rem" }}
               transition={{ type: "spring", bounce: 0.7 }}
             >
               <SocialMediaIcon name="tiktok" />
+            </motion.div>
+            <motion.div
+              whileHover={{ scale: 1.1 }}
+              style={{ margin: "0.1rem" }}
+              transition={{ type: "spring", bounce: 0.7 }}
+            >
+              <SocialMediaIcon name="fb" />
             </motion.div>
           </motion.div>
         </div>
