@@ -1,5 +1,8 @@
+"use client";
 import Hero from "./components/Hero";
 import FirstComponent from "./components/MainpageComponents/FirstComponent";
+import { motion } from "framer-motion";
+import SecondComponent from "./components/MainpageComponents/SecondComponent";
 
 export default function Home() {
   return (
@@ -11,7 +14,9 @@ export default function Home() {
       }}
     >
       <Hero />
+
       <FirstComponent />
+      <SecondComponent />
     </main>
   );
 }

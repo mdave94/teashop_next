@@ -10,10 +10,8 @@ const Footer = () => {
   const footerVariatns = {
     hidden: {
       opacity: 0,
-      y: 80,
     },
     visible: {
-      y: 0,
       opacity: 1,
       transition: {
         duration: 0.7,
@@ -46,7 +44,7 @@ const Footer = () => {
         animate={isInView ? "visible" : "hidden"}
         className="h-full  px-8 text-textGray  justify-center items-center "
       >
-        <div className="gap-14 my-6  grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] justify-between bg-w items-center">
+        <div className="gap-14 my-6  grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] justify-between bg-w items-center">
           <div className="text-4xl  bg-gray-300 p-2 px-4 rounded-2xl ">
             LogoHolder
           </div>

@@ -49,7 +49,7 @@ const Hero = () => {
   const heroTexts = ["TEA", "ÉLMÉNY", "KÖZÖSSÉG"];
 
   return (
-    <div className="flex w-screen flex-row flex-grow items-center justify-between  h-screen px-[150px]">
+    <div className="flex bg-slate-300 w-screen flex-row flex-grow items-center justify-between  h-screen px-[150px]">
       <div className="h-[400px] flex flex-col justify-center items-start  ">
         {heroTexts.map((text, index) => (
           <motion.div
