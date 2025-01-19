@@ -46,7 +46,7 @@ const Footer = () => {
         animate={isInView ? "visible" : "hidden"}
         className="h-full  px-8 text-textGray  justify-center items-center "
       >
-        <div className="gap-14 my-6  grid lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 justify-between bg-w items-center">
+        <div className="gap-14 my-6  grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] justify-between bg-w items-center">
           <div className="text-4xl  bg-gray-300 p-2 px-4 rounded-2xl ">
             LogoHolder
           </div>
