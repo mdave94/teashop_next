@@ -50,40 +50,42 @@ const Hero = () => {
   const heroTexts = ["TEA", "ÉLMÉNY", "KÖZÖSSÉG"];
 
   return (
-    <div className="relative w-screen h-screen">
+    <div className="relative flex items-center justify-start w-screen h-screen">
       <div
-        className="absolute inset-0 bg-cover bg-center blur-sm"
+        className="absolute inset-0 bg-cover bg-center "
         style={{ backgroundImage: "url('/images/HeroPicture.jpg')" }}
       ></div>
-      <div className="relative flex w-screen flex-row flex-grow items-center justify-between h-full px-[150px]">
-        <div className="h-[400px] flex flex-col justify-center items-start ">
-          {heroTexts.map((text, index) => (
+      <div className="flex items-center justify-center w-screen h-screen  ">
+        <div className="relative flex w-screen max-w-[1500px] flex-row flex-grow items-center justify-between h-full ">
+          <div className="h-[400px] flex flex-col justify-center items-start ">
+            {heroTexts.map((text, index) => (
+              <motion.div
+                key={index}
+                className="text-7xl mb-4 text-white"
+                variants={textVariants(index)}
+                initial="initial"
+                animate="animate"
+              >
+                {text}
+              </motion.div>
+            ))}
             <motion.div
-              key={index}
-              className="text-6xl mb-4 text-white"
-              variants={textVariants(index)}
+              className="text-9xl text-white font-bold flex flex-row"
+              variants={teanderVariants}
               initial="initial"
               animate="animate"
             >
-              {text}
+              TEANDER
             </motion.div>
-          ))}
+          </div>
           <motion.div
-            className="text-8xl text-white font-bold flex flex-row"
-            variants={teanderVariants}
+            variants={imageVariants}
             initial="initial"
             animate="animate"
           >
-            TEANDER
+            {/* Your image or other content here */}
           </motion.div>
         </div>
-        <motion.div
-          variants={imageVariants}
-          initial="initial"
-          animate="animate"
-        >
-          {/* Your image or other content here */}
-        </motion.div>
       </div>
     </div>
   );
