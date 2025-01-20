@@ -39,37 +39,19 @@ const Navbar = () => {
           transform: `translateY(${translateY}%)`,
           transition: "transform 0.3s ease-in-out",
         }}
-        className="text-teander  fixed z-10 flex justify-center items-center "
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.3, delay: 0.3 }}
+        className="text-teander fixed z-10 flex justify-center items-center "
       >
-        <motion.div className="flex  w-screen flex-row flex-grow items-center bg-white max-w-[90%] rounded-[50px] mt-10 justify-between  px-[150px]">
+        <motion.div className="flex  w-screen flex-row flex-grow items-center h-[5rem] bg-white max-w-[90%] rounded-[50px] mt-10 justify-between  px-[150px]">
           <motion.div className="text-2xl flex  cursor-pointer  flex-row">
-            <Image src="/images/logo.jpg" alt="logo" width={110} height={110} />
+            <Image src="/images/logo.jpg" alt="logo" width={140} height={140} />
           </motion.div>
           <div className="flex items-center cursor-pointer  space-x-4  ">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 2, delay: 0.1 }}
-              className="text-teander  text-xl"
-            >
-              Home
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 2, delay: 0.2 }}
-              className="text-teander  text-xl"
-            >
-              About
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 2, delay: 0.3 }}
-              className="text-teander  text-xl"
-            >
-              Contact
-            </motion.div>
+            <div className="text-teander  text-xl">Home</div>
+            <div className="text-teander  text-xl">About</div>
+            <div className="text-teander  text-xl">Contact</div>
           </div>
         </motion.div>
       </motion.div>
