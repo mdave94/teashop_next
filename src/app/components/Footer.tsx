@@ -2,6 +2,7 @@
 import { motion, useInView } from "framer-motion";
 import SocialMediaIcon from "./ui/svg/SocialMediaIcon";
 import { useRef } from "react";
+import Image from "next/image";
 
 const Footer = () => {
   const footerRef = useRef(null);
@@ -40,13 +41,14 @@ const Footer = () => {
         ref={footerRef}
         variants={footerVariatns}
         initial="hidden"
-        style={{ backgroundColor: "#0C0C0C" }}
+        //style={{ backgroundColor: "#0C0C0C" }}
+
         animate={isInView ? "visible" : "hidden"}
         className="h-full  px-8 text-textGray  justify-center items-center "
       >
         <div className="gap-14 my-6  grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] justify-between bg-w items-center">
-          <div className="text-4xl  bg-gray-300 p-2 px-4 rounded-2xl ">
-            LogoHolder
+          <div className="text-4xl   p-2 px-4 rounded-2xl ">
+            <Image src="/png/logo.png" alt="logo" width={150} height={140} />
           </div>
           <div
             className="flex flex-col ml-4
