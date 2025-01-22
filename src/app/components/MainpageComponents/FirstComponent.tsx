@@ -1,6 +1,8 @@
 "use client";
 import { motion } from "framer-motion";
-
+import { useState } from "react";
+import Modal from "./Modal/Modal";
+import { AnimatePresence } from "framer-motion";
 const FirstComponent = () => {
   const imageVariants = {
     initial: {
@@ -13,12 +15,16 @@ const FirstComponent = () => {
       x: 0,
       transition: {
         duration: 3,
-        delay: 1,
+        delay: 0.5,
       },
     },
   };
 
   const componentVariants = {};
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
+  function closeModal(): void {
+    setModalOpen(false);
+  }
 
   return (
     <div className=" bg-white w-screen flex flex-row justify-center items-center h-screen p-2 ">
@@ -33,6 +39,20 @@ const FirstComponent = () => {
           },
         }}
       >
+        <AnimatePresence initial={false} mode="wait">
+          {modalOpen && (
+            <Modal
+              text="This is a modal animated with Framer Motion"
+              closeModal={closeModal}
+            />
+          )}
+        </AnimatePresence>
+        <button
+          className="bg-blue-200 p-2 rounded-lg"
+          onClick={() => setModalOpen(true)}
+        >
+          Show Modal
+        </button>
         <div className="grid lg:grid-cols-2 md:grid-cols-1 justify-center items-center">
           <div className="mx-14 ">
             <div className="max-w-[500px]">
@@ -52,16 +72,7 @@ const FirstComponent = () => {
             </div>
           </div>
 
-          <div className="flex justify-center items-center">
-            <motion.div
-              variants={imageVariants}
-              initial="initial"
-              animate="animate"
-              className="bg-blue-600 rounded-full 
-      min-w-[500px] min-h-[500px]
-      w-[500px] h-[500px]"
-            />
-          </div>
+          <div className="flex justify-center items-center">{/* MODAL */}</div>
         </div>
       </motion.div>
     </div>
