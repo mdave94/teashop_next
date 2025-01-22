@@ -6,35 +6,31 @@ import { images } from "./images";
 import Modal from "../Modal/Modal";
 
 const variants = {
-  enter: (direction: number) => {
-    return {
-      x: direction > 0 ? 1000 : -1000,
-      opacity: 0,
-    };
-  },
+  enter: (direction: number) => ({
+    x: direction > 0 ? 1000 : -1000,
+    opacity: 0,
+  }),
   center: {
     zIndex: 1,
     x: 0,
     opacity: 1,
   },
-  exit: (direction: number) => {
-    return {
-      zIndex: 0,
-      x: direction < 0 ? 1000 : -1000,
-      opacity: 0,
-    };
-  },
+  exit: (direction: number) => ({
+    zIndex: 0,
+    x: direction < 0 ? 1000 : -1000,
+    opacity: 0,
+  }),
 };
 
 const swipeConfidenceThreshold = 10000;
-const swipePower = (offset: number, velocity: number) => {
-  return Math.abs(offset) * velocity;
-};
+const swipePower = (offset: number, velocity: number) =>
+  Math.abs(offset) * velocity;
 
 export const TeaGallery: React.FC = () => {
   const [[page, direction], setPage] = useState([0, 0]);
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [isDragging, setIsDragging] = useState<boolean>(false);
+  const [startX, setStartX] = useState<number | null>(null);
 
   const imageIndex = wrap(0, images.length, page);
 
@@ -53,20 +49,33 @@ export const TeaGallery: React.FC = () => {
     setIsDragging(false);
   };
 
-  const handleClick = () => {
-    if (!isDragging) {
-      setModalOpen(true);
+  const handlePointerDown = (e: React.PointerEvent) => {
+    setStartX(e.clientX);
+    setIsDragging(false);
+  };
+
+  const handlePointerMove = (e: React.PointerEvent) => {
+    if (startX !== null && Math.abs(e.clientX - startX) > 5) {
+      setIsDragging(true);
     }
   };
 
+  const handlePointerUp = () => {
+    if (!isDragging) {
+      // Open modal if not dragging
+      setModalOpen(true);
+    }
+    setStartX(null);
+    setIsDragging(false);
+  };
+
   return (
-    <div className="relative w-screen h-screen flex justify-center items-center overflow-hidden">
+    <div className="relative max-w-[400px] h-screen flex justify-center items-center overflow-hidden">
       <AnimatePresence initial={false} custom={direction}>
         <motion.button
-          onClick={handleClick}
-          onPointerDown={() => setIsDragging(false)}
-          onPointerUp={() => setIsDragging(false)}
-          onDragStart={() => setIsDragging(true)}
+          onPointerDown={handlePointerDown}
+          onPointerMove={handlePointerMove}
+          onPointerUp={handlePointerUp}
           key={page}
           style={{ backgroundImage: `url(${images[imageIndex]})` }}
           custom={direction}
@@ -75,12 +84,11 @@ export const TeaGallery: React.FC = () => {
           animate="center"
           exit="exit"
           transition={{
-            x: { type: "spring", stiffness: 300, damping: 30 },
+            x: { type: "tween", stiffness: 100, damping: 30 },
             opacity: { duration: 0.2 },
           }}
           drag="x"
           dragConstraints={{ left: 0, right: 0 }}
-          dragElastic={1}
           onDragEnd={handleDragEnd}
           className="z-10 w-[400px] h-[450px] bg-cover bg-center rounded-3xl cursor-pointer"
         />
@@ -92,23 +100,17 @@ export const TeaGallery: React.FC = () => {
         {"‣"}
       </div>
       <div
-        className="absolute top-1/2 transform -translate-y-1/2 left-2 bg-white rounded-full w-10 h-10 flex justify-center items-center select-none cursor-pointer font-bold text-lg z-20 scale-x-[-1]"
+        className="absolute top-1/2 transform -translate-y-1/2 left-2 bg-white rounded-full w-10 h-10 flex justify-center items-center select-none cursor-pointer font-bold text-lg z-20 transform scale-x-[-1]"
         onClick={() => paginate(-1)}
       >
         {"‣"}
       </div>
-      <div
-        className="absolute top-2 right-2 bg-black bg-opacity-40 rounded-lg w-5 h-5 flex justify-center items-center cursor-pointer z-20"
-        onClick={() => window.location.reload()}
-      >
-        {"⟳"}
-      </div>
+
       <AnimatePresence initial={false} mode="wait">
         {modalOpen && (
           <Modal
             text="This is a modal animated with Framer Motion"
             closeModal={() => setModalOpen(false)}
-            className="z-30"
           />
         )}
       </AnimatePresence>
