@@ -92,7 +92,7 @@ export const TeaGallery: React.FC = () => {
         {"‣"}
       </div>
       <div
-        className="absolute top-1/2 transform -translate-y-1/2 left-2 bg-white rounded-full w-10 h-10 flex justify-center items-center select-none cursor-pointer font-bold text-lg z-20 transform scale-x-[-1]"
+        className="absolute top-1/2 transform -translate-y-1/2 left-2 bg-white rounded-full w-10 h-10 flex justify-center items-center select-none cursor-pointer font-bold text-lg z-20 scale-x-[-1]"
         onClick={() => paginate(-1)}
       >
         {"‣"}

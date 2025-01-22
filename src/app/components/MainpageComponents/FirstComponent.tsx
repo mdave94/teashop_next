@@ -28,7 +28,7 @@ const FirstComponent = () => {
   }
 
   return (
-    <div className=" bg-white w-screen flex flex-row justify-center items-center h-screen p-2 ">
+    <div className=" bg-green-200 w-screen flex flex-row justify-center items-center h-screen p-2 ">
       <motion.div
         initial={{ x: 200 }}
         viewport={{ once: true }}
@@ -60,26 +60,7 @@ const FirstComponent = () => {
           </div>
 
           <div className="flex justify-center items-center">
-            {/* MODAL 
-            <div className="d">
-              <AnimatePresence initial={false} mode="wait">
-                {modalOpen && (
-                  <Modal
-                    text="This is a modal animated with Framer Motion"
-                    closeModal={closeModal}
-                  />
-                )}
-              </AnimatePresence>
-              <button
-                className="bg-blue-200 p-2 rounded-lg"
-                onClick={() => setModalOpen(true)}
-              >
-                Show Modal
-              </button>
-            </div>
-*/}
             <TeaGallery />
-            {/* END MODAL */}
           </div>
         </div>
       </motion.div>
