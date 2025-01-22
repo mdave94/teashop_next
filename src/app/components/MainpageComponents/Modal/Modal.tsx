@@ -1,12 +1,13 @@
 import { motion } from "framer-motion";
 import Backdrop from "./Backdrop";
 
-type ModelProps = {
+type ModalProps = {
   text: string;
   closeModal: () => void;
+  className?: string;
 };
 
-const Modal: React.FC<ModelProps> = ({ text, closeModal }) => {
+const Modal: React.FC<ModalProps> = ({ text, closeModal, className }) => {
   const variants = {
     initial: {
       y: "-200%",
@@ -27,20 +28,18 @@ const Modal: React.FC<ModelProps> = ({ text, closeModal }) => {
   };
 
   return (
-    <>
-      <Backdrop onClick={closeModal}>
-        <motion.div
-          onClick={(e) => e.stopPropagation()}
-          className="modal bg-red-500 cursor-pointer flex justify-center text-center "
-          variants={variants}
-          initial="initial"
-          animate="visible"
-          exit="exit"
-        >
-          {text}
-        </motion.div>
-      </Backdrop>
-    </>
+    <Backdrop onClick={closeModal}>
+      <motion.div
+        onClick={(e) => e.stopPropagation()} // Prevent click event from bubbling up to the backdrop
+        className={`modal bg-red-500 cursor-pointer flex justify-center text-center ${className}`}
+        variants={variants}
+        initial="initial"
+        animate="visible"
+        exit="exit"
+      >
+        {text}
+      </motion.div>
+    </Backdrop>
   );
 };
 
