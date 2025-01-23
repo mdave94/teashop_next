@@ -9,18 +9,15 @@ type ModalProps = {
   className?: string;
 };
 
-const Modal: React.FC<ModalProps> = ({
-  CardPicture,
-  CardText,
-  closeModal,
-  className,
-}) => {
+const Modal: React.FC<ModalProps> = ({ CardPicture, CardText, closeModal }) => {
   const variants = {
     initial: {
+      scale: 0.5,
       y: "-200%",
       opacity: 1,
     },
     visible: {
+      scale: 1,
       y: "50%",
       transition: {
         duration: 0.1,
@@ -30,6 +27,7 @@ const Modal: React.FC<ModalProps> = ({
       },
     },
     exit: {
+      scale: 0.9,
       y: "200%",
     },
   };

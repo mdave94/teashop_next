@@ -21,17 +21,11 @@ const FirstComponent = () => {
     },
   };
 
-  const componentVariants = {};
-  const [modalOpen, setModalOpen] = useState<boolean>(false);
-  function closeModal(): void {
-    setModalOpen(false);
-  }
-
   return (
     <div className=" bg-green-200 w-screen flex flex-row justify-center items-center h-screen p-2 ">
       <motion.div
         initial={{ x: 200 }}
-        viewport={{ once: true }}
+        viewport={{ once: true, amount: 0.2 }}
         whileInView={{
           opacity: 1,
           x: 0,
