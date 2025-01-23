@@ -84,13 +84,15 @@ export const TeaGallery: React.FC = () => {
           animate="center"
           exit="exit"
           transition={{
-            x: { type: "tween", stiffness: 100, damping: 30 },
-            opacity: { duration: 0.2 },
+            x: { stiffness: 100, damping: 30 },
+            opacity: { duration: 0.1 },
           }}
           drag="x"
           dragConstraints={{ left: 0, right: 0 }}
           onDragEnd={handleDragEnd}
-          className="z-10 w-[400px] h-[450px] bg-cover bg-center rounded-3xl cursor-pointer"
+          className={`z-10 w-[400px] h-[450px] bg-cover bg-center rounded-3xl ${
+            isDragging ? "cursor-grabbing" : "cursor-pointer"
+          } `}
         />
       </AnimatePresence>
       <div
@@ -100,7 +102,7 @@ export const TeaGallery: React.FC = () => {
         {"‣"}
       </div>
       <div
-        className="absolute top-1/2 transform -translate-y-1/2 left-2 bg-white rounded-full w-10 h-10 flex justify-center items-center select-none cursor-pointer font-bold text-lg z-20 transform scale-x-[-1]"
+        className="absolute top-1/2 transform -translate-y-1/2 left-2 bg-white rounded-full w-10 h-10 flex justify-center items-center select-none cursor-pointer font-bold text-lg z-20 scale-x-[-1]"
         onClick={() => paginate(-1)}
       >
         {"‣"}
@@ -109,7 +111,8 @@ export const TeaGallery: React.FC = () => {
       <AnimatePresence initial={false} mode="wait">
         {modalOpen && (
           <Modal
-            text="This is a modal animated with Framer Motion"
+            CardText="Fekete Tea"
+            CardPicture={images[imageIndex]}
             closeModal={() => setModalOpen(false)}
           />
         )}

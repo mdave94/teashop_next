@@ -1,13 +1,20 @@
 import { motion } from "framer-motion";
 import Backdrop from "./Backdrop";
+import ModalCard from "./ModalCard";
 
 type ModalProps = {
-  text: string;
+  CardPicture: string;
+  CardText: string;
   closeModal: () => void;
   className?: string;
 };
 
-const Modal: React.FC<ModalProps> = ({ text, closeModal, className }) => {
+const Modal: React.FC<ModalProps> = ({
+  CardPicture,
+  CardText,
+  closeModal,
+  className,
+}) => {
   const variants = {
     initial: {
       y: "-200%",
@@ -31,13 +38,13 @@ const Modal: React.FC<ModalProps> = ({ text, closeModal, className }) => {
     <Backdrop onClick={closeModal}>
       <motion.div
         onClick={(e) => e.stopPropagation()} // Prevent click event from bubbling up to the backdrop
-        className={`modal bg-red-500 cursor-pointer flex justify-center text-center ${className}`}
+        className={`flex justify-center align-middle items-center `}
         variants={variants}
         initial="initial"
         animate="visible"
         exit="exit"
       >
-        {text}
+        <ModalCard CardPicture={CardPicture} CardText={CardText} />
       </motion.div>
     </Backdrop>
   );
