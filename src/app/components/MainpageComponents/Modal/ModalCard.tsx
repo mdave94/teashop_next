@@ -30,10 +30,16 @@ const ModalCard: React.FC<ModalCardProps> = ({ CardPicture, CardText }) => {
             Curabitur nec orci eu erat lobortis aliquam at et lorem
           </div>
           <div className="">Kiszerelés</div>
-          <div className="grid justify-center items-center text-center grid-cols-[repeat(auto-fit,minmax(50px,1fr))]  ">
-            <div className="">30g</div>
-            <div className="">50g</div>
-            <div className="">100g</div>
+          <div className="grid justify-center items-center  text-center grid-cols-[repeat(auto-fit,minmax(50px,1fr))]  ">
+            <div className="hover:bg-blue-600 hover:rounded-3xl p-1 cursor-pointer ">
+              30g
+            </div>
+            <div className="hover:bg-blue-600 hover:rounded-3xl p-1 cursor-pointer">
+              50g
+            </div>
+            <div className="hover:bg-blue-600 hover:rounded-3xl p-1 cursor-pointer">
+              100g
+            </div>
           </div>
           <div className="flex justify-center ">
             <div className="bg-green-500 mb-3 p-2 rounded-3xl text-white  ">
