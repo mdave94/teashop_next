@@ -3,6 +3,10 @@ export type GalleryItem = {
   name: string;
   picturePath: string;
   text: string;
-  packages: string[];
-  prices: string[];
+  packagePrices: PackagePrice[];
+};
+
+export type PackagePrice = {
+  package: string;
+  price: string;
 };

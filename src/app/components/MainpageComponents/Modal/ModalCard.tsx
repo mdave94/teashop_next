@@ -1,7 +1,8 @@
 import Image from "next/image";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { GalleryItem } from "@/app/Helpers/galleryItemHelper";
+import { GalleryItem, PackagePrice } from "@/app/Helpers/galleryItemHelper";
+import { GalleryItems } from "../TeaGallery/galleryItems";
 
 type ModalCardProps = {
   GalleryItem: GalleryItem;
@@ -23,13 +24,13 @@ const prices = [
 ];
 
 const ModalCard: React.FC<ModalCardProps> = ({ GalleryItem }) => {
-  const basePrice = GalleryItem.prices[0];
+  const basePrice = GalleryItem.packagePrices[0].price;
   const [price, setPrice] = useState<string>(basePrice);
   const [selectedPacking, setSelectedPacking] = useState<string>("50 g"); // State to track selected packing
 
-  const handleSetPrice = (item: { packing: string; price: string }) => {
+  const handleSetPrice = (item: PackagePrice) => {
     setPrice(item.price);
-    setSelectedPacking(item.packing); // Update selected packing state
+    setSelectedPacking(item.package); // Update selected packing state
   };
 
   return (
@@ -56,17 +57,17 @@ const ModalCard: React.FC<ModalCardProps> = ({ GalleryItem }) => {
           <div className="border-t-2 pt-5 text-xl mt-5">Kiszerelés</div>
           <div className="flex justify-center">
             <div className="flex mt-5 items-center text-center justify-between">
-              {prices.map((item) => (
+              {GalleryItem.packagePrices.map((item) => (
                 <div
                   onClick={() => handleSetPrice(item)}
-                  key={item.packing}
+                  key={item.package}
                   className={`w-[7rem] rounded-3xl hover:bg-green-200 p-1 cursor-pointer mx-4 ${
-                    selectedPacking === item.packing
+                    selectedPacking === item.package
                       ? "bg-green-200"
                       : " bg-green-100" // Default background for unselected items
                   }`}
                 >
-                  {item.packing}
+                  {item.package}
                 </div>
               ))}
             </div>
