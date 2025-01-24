@@ -1,15 +1,17 @@
 import { motion } from "framer-motion";
 import Backdrop from "./Backdrop";
 import ModalCard from "./ModalCard";
+import { GalleryItems } from "../TeaGallery/galleryItems";
+import { GalleryItem } from "@/app/Helpers/galleryItemHelper";
 
 type ModalProps = {
-  CardPicture: string;
-  CardText: string;
+  GalleryItem: GalleryItem;
+
   closeModal: () => void;
   className?: string;
 };
 
-const Modal: React.FC<ModalProps> = ({ CardPicture, CardText, closeModal }) => {
+const Modal: React.FC<ModalProps> = ({ GalleryItem, closeModal }) => {
   const variants = {
     initial: {
       scale: 0.5,
@@ -35,14 +37,14 @@ const Modal: React.FC<ModalProps> = ({ CardPicture, CardText, closeModal }) => {
   return (
     <Backdrop onClick={closeModal}>
       <motion.div
-        onClick={(e) => e.stopPropagation()} // Prevent click event from bubbling up to the backdrop
+        onClick={(e) => e.stopPropagation()}
         className={`flex justify-center align-middle items-center `}
         variants={variants}
         initial="initial"
         animate="visible"
         exit="exit"
       >
-        <ModalCard CardPicture={CardPicture} CardText={CardText} />
+        <ModalCard GalleryItem={GalleryItem} />
       </motion.div>
     </Backdrop>
   );

@@ -2,8 +2,8 @@ import * as React from "react";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { wrap } from "popmotion";
-import { images } from "./images";
 import Modal from "../Modal/Modal";
+import { GalleryItems } from "./galleryItems";
 
 const variants = {
   enter: (direction: number) => ({
@@ -32,7 +32,7 @@ export const TeaGallery: React.FC = () => {
   const [isDragging, setIsDragging] = useState<boolean>(false);
   const [startX, setStartX] = useState<number | null>(null);
 
-  const imageIndex = wrap(0, images.length, page);
+  const imageIndex = wrap(0, GalleryItems.length, page);
 
   const paginate = (newDirection: number) => {
     setPage([page + newDirection, newDirection]);
@@ -77,7 +77,9 @@ export const TeaGallery: React.FC = () => {
           onPointerMove={handlePointerMove}
           onPointerUp={handlePointerUp}
           key={page}
-          style={{ backgroundImage: `url(${images[imageIndex]})` }}
+          style={{
+            backgroundImage: `url(${GalleryItems[imageIndex].picturePath})`,
+          }}
           custom={direction}
           variants={variants}
           initial="enter"
@@ -111,8 +113,7 @@ export const TeaGallery: React.FC = () => {
       <AnimatePresence initial={false} mode="wait">
         {modalOpen && (
           <Modal
-            CardText="Fekete Tea"
-            CardPicture={images[imageIndex]}
+            GalleryItem={GalleryItems[imageIndex]}
             closeModal={() => setModalOpen(false)}
           />
         )}

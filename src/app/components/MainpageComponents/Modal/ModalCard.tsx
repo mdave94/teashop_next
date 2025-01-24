@@ -1,10 +1,10 @@
 import Image from "next/image";
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { GalleryItem } from "@/app/Helpers/galleryItemHelper";
 
 type ModalCardProps = {
-  CardPicture: string;
-  CardText: string;
+  GalleryItem: GalleryItem;
 };
 
 const prices = [
@@ -22,8 +22,8 @@ const prices = [
   },
 ];
 
-const ModalCard: React.FC<ModalCardProps> = ({ CardPicture, CardText }) => {
-  const basePrice = "5000 Ft";
+const ModalCard: React.FC<ModalCardProps> = ({ GalleryItem }) => {
+  const basePrice = GalleryItem.prices[0];
   const [price, setPrice] = useState<string>(basePrice);
   const [selectedPacking, setSelectedPacking] = useState<string>("50 g"); // State to track selected packing
 
@@ -38,14 +38,14 @@ const ModalCard: React.FC<ModalCardProps> = ({ CardPicture, CardText }) => {
         <div className="rounded-t-3xl w-full h-[150px] flex justify-center items-center">
           <Image
             alt="card picture"
-            src="/images/HeroPicture.jpg"
-            width={500}
+            src={GalleryItem.picturePath}
+            width={450}
             height={100}
-            className="rounded-t-3xl"
+            className="rounded-t-3xl max-h-[350px] "
           />
         </div>
         <div className="bg-white rounded-b-3xl w-full p-4">
-          <div className="my-5 text-4xl">{CardText}</div>
+          <div className="my-5 text-4xl">{GalleryItem.name}</div>
           <div className="text-gray-500">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ut
             volutpat ligula. Vivamus fringilla, dolor ut accumsan cursus, sapien
