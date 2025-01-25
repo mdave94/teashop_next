@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import { AnimatePresence, motion, LayoutGroup } from "framer-motion";
+import { RxCross1 } from "react-icons/rx";
 
 interface ItemProps {
   id: number;
@@ -64,9 +65,23 @@ export default function Example() {
             >
               Hello World
               <motion.button
-                className="absolute top-0 right-0 mt-4 mr-4 p-2 cursor-pointer bg-gray-100 rounded-full"
+                className="absolute top-0 right-0 mt-4 mr-4 p-2 cursor-pointer  rounded-full"
                 onClick={() => setSelectedId(null)}
-              ></motion.button>
+              >
+                <motion.div
+                  whileHover={{
+                    opacity: 1,
+                    rotate: 90,
+                    color: "black",
+                  }}
+                  initial={{ opacity: 0.8 }}
+                  transition={{ duration: 0.5, ease: "easeInOut" }} // Smooth and faster transitions
+                  className="absolute top-4 right-4
+                           cursor-pointer w-fit hover:text-white bg-gray-100 rounded-3xl p-1 flex justify-center items-center"
+                >
+                  <RxCross1 />
+                </motion.div>
+              </motion.button>
             </motion.div>
             <motion.div
               key="backdrop"
