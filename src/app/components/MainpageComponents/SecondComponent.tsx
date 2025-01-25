@@ -1,6 +1,6 @@
 "use client";
-import { motion } from "framer-motion";
-import Example from "../EventSection/Example";
+
+import EventList from "../EventSection/EventList";
 
 const SecondComponent = () => {
   const imageVariants = {
@@ -22,7 +22,7 @@ const SecondComponent = () => {
 
   return (
     <div className=" bg-white w-screen flex flex-row justify-center items-center h-screen p-2 ">
-      <Example />
+      <EventList />
     </div>
   );
 };
