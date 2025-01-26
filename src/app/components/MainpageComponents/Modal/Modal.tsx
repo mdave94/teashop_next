@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import Backdrop from "./Backdrop";
 import ModalCard from "./ModalCard";
-import { GalleryItems } from "../TeaGallery/galleryItems";
 import { GalleryItem } from "@/app/Helpers/galleryItemHelper";
 
 type ModalProps = {

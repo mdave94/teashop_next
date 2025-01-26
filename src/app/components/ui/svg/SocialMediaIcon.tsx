@@ -1,4 +1,4 @@
-const SocialMediaIcon = ({ name, ...props }: { name: String }) => {
+const SocialMediaIcon = ({ name }: { name: string }) => {
   if (name === "insta") {
     return (
       <>

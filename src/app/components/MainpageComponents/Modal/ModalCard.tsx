@@ -1,10 +1,8 @@
-import Image from "next/image";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { GalleryItem, PackagePrice } from "@/app/Helpers/galleryItemHelper";
-import { GalleryItems } from "../TeaGallery/galleryItems";
 import { RxCross1 } from "react-icons/rx";
-import { url } from "inspector";
+
 type ModalCardProps = {
   GalleryItem: GalleryItem;
   closeModal: () => void;

@@ -1,26 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
-import { useState } from "react";
-import Modal from "./Modal/Modal";
-import { AnimatePresence } from "framer-motion";
 import TeaGallery from "./TeaGallery/TeaGallery";
 const FirstComponent = () => {
-  const imageVariants = {
-    initial: {
-      opacity: 0,
-      x: 20,
-    },
-
-    animate: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        duration: 3,
-        delay: 0.5,
-      },
-    },
-  };
-
   return (
     <div className=" bg-green-200 w-screen flex flex-row justify-center items-center h-screen p-2 ">
       <motion.div

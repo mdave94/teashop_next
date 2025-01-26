@@ -1,11 +1,11 @@
 "use client";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 
 const Navbar: React.FC = () => {
   const [visible, setIsVisible] = useState<boolean>(true);
-  const { scrollY } = useScroll();
+
   const [lastScrollY, setLastScrollY] = useState<number>(0);
 
   const handleScroll = () => {

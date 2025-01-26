@@ -38,7 +38,13 @@ export const TeaGallery: React.FC = () => {
     setPage([page + newDirection, newDirection]);
   };
 
-  const handleDragEnd = (e: any, { offset, velocity }: any) => {
+  const handleDragEnd = (
+    event: MouseEvent | TouchEvent | PointerEvent,
+    {
+      offset,
+      velocity,
+    }: { offset: { x: number; y: number }; velocity: { x: number; y: number } }
+  ) => {
     const swipe = swipePower(offset.x, velocity.x);
 
     if (swipe < -swipeConfidenceThreshold) {

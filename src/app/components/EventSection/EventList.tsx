@@ -8,7 +8,6 @@ interface ItemProps {
   title: string;
   picturePath: string;
   subtitle: string;
-  [key: string]: any;
 }
 
 const Item = ({ id, picturePath, title, subtitle, ...props }: ItemProps) => (

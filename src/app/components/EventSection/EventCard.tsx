@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { RxCross1 } from "react-icons/rx";
 
 type EventCardProps = {
