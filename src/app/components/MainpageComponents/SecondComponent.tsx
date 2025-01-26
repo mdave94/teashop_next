@@ -18,8 +18,6 @@ const SecondComponent = () => {
     },
   };
 
-  const componentVariants = {};
-
   return (
     <div className=" bg-white w-screen flex flex-row justify-center items-center h-screen p-2 ">
       <EventList />
