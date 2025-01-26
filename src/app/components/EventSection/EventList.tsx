@@ -1,24 +1,25 @@
 import { useMemo, useState } from "react";
 import { AnimatePresence, motion, LayoutGroup } from "framer-motion";
-import { RxCross1 } from "react-icons/rx";
 import EventCard from "./EventCard";
 
 interface ItemProps {
   id: number;
   title: string;
+  picturePath: string;
   subtitle: string;
   [key: string]: any;
 }
 
-const Item = ({ id, title, subtitle, ...props }: ItemProps) => (
+const Item = ({ id, picturePath, title, subtitle, ...props }: ItemProps) => (
   <motion.div
-    className="p-8 bg-white cursor-pointer shadow-md  border border-gray-200 rounded-xl"
+    className="p-8 bg-cover min-h-[150px] bg-white cursor-pointer shadow-md  border border-gray-200 rounded-xl"
     key={id}
+    style={{ backgroundImage: `url(${picturePath})` }}
     layoutId={id.toString()}
     {...props}
   >
-    <span>{subtitle}</span>
-    <h2>{title}</h2>
+    <div className="text-white font-bold text-xl">{title}</div>
+    <div className="text-white">{subtitle}</div>
   </motion.div>
 );
 
@@ -31,18 +32,21 @@ const EventList = () => {
         id: 1,
         title: "Item 1",
         subtitle: "Subtitle 1",
+        picturePath: "/images/HeroPicture.jpg",
         context: "CONTEXT 1",
       },
       {
         id: 2,
         title: "Item 2",
         subtitle: "Subtitle 2",
+        picturePath: "/images/tea1.jpg",
         context: "CONTEXT 2",
       },
       {
         id: 3,
         title: "Item 3",
         subtitle: "Subtitle 3",
+        picturePath: "/images/tea1.jpg",
         context:
           "Lconsectetur adipiscing elit. Nullam malesuada, sapien sit amet ultricies viverra, nunc libero Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam malesuada, sapien sit amet ultricies viverra, nunc libero Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam malesuada, sapien sit amet ultricies viverra, nunc libero Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam malesuada, sapien sit amet ultricies viverra, nunc libero",
       },
@@ -50,6 +54,7 @@ const EventList = () => {
         id: 4,
         title: "Item 4",
         subtitle: "Subtitle 4",
+        picturePath: "/images/HeroPicture.jpg",
         context:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam malesuada, sapien sit amet ultricies viverra, nunc libero Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam malesuada, sapien sit amet ultricies viverra, nunc libero Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam malesuada, sapien sit amet ultricies viverra, nunc libero Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam malesuada, sapien sit amet ultricies viverra, nunc libero",
       },
@@ -59,7 +64,7 @@ const EventList = () => {
 
   return (
     <LayoutGroup>
-      <ul className="max-w-[1200px] m-0 grid grid-cols-6 grid-rows-2 gap-4 list-none p-24">
+      <ul className="w-[1400px] m-0 grid grid-cols-6 grid-rows-2 gap-4 list-none p-24">
         {items.map((item) => (
           <li
             key={item.id}

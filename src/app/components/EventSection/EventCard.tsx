@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { RxCross1 } from "react-icons/rx";
 
 type EventCardProps = {
@@ -8,21 +9,34 @@ type EventCardProps = {
     title: string;
     subtitle: string;
     context: string;
+    picturePath: string;
   };
 };
 
 const EventCard: React.FC<EventCardProps> = ({ item, setSelectedId }) => {
+  const { title, subtitle, context, picturePath } = item;
+
+  console.log(item);
   return (
     <>
       <motion.div
-        className="z-10 top-0   left-0 flex w-full h-full place-content-center place-items-center pointer-events-none p-20 fixed"
+        className="z-10 top-0  w-full flex justify-center items-center content-center max-w-[800px] h-full place-content-center place-items-center pointer-events-none p-20 fixed"
         key="modal"
       >
         <motion.div
-          className="relative overflow-hidden  w-full h-full bg-white shadow-lg border border-gray-300 pointer-events-auto will-change-transform p-6 rounded-xl flex-1"
+          className="relative overflow-hidden   h-full bg-white shadow-lg pointer-events-auto will-change-transform rounded-3xl flex-1"
           layoutId={item.id.toString()}
         >
-          {item.context}
+          <div
+            className="h-[250px] bg-cover "
+            style={{ backgroundImage: `url(${picturePath})` }}
+          />
+
+          <div className="p-2">
+            <div className="text-3xl mb-3">{title}</div>
+            <div className="text-xl">{subtitle}</div>
+            <div className="p-6">{context}</div>
+          </div>
           <motion.button
             className="absolute top-0 right-0 mt-4 mr-4 p-2 cursor-pointer  rounded-full"
             onClick={() => setSelectedId(null)}
