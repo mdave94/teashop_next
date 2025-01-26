@@ -5,7 +5,7 @@ const FirstComponent = () => {
   return (
     <div className=" bg-green-200 w-screen flex flex-row justify-center items-center h-screen p-2 ">
       <motion.div
-        initial={{ x: 200 }}
+        initial={{ x: 80 }}
         viewport={{ once: true, amount: 0.2 }}
         whileInView={{
           opacity: 1,

@@ -99,14 +99,26 @@ const EventList = () => {
   return (
     <LayoutGroup>
       <div className="flex flex-col">
-        <ul className="w-[1200px] m-0 grid grid-cols-6 grid-rows-2 gap-4 list-none p-24">
+        <motion.ul
+          initial={{ opacity: 0, y: 100 }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+            transition: {
+              duration: 1,
+              delay: 0.3,
+            },
+          }}
+          transition={{ duration: 1 }}
+          className="w-[1200px] m-0 grid grid-cols-6 grid-rows-2 gap-4 list-none p-24"
+        >
           <AnimatePresence mode="wait">
             {currentItems.map((item, index) => (
               <motion.li
                 key={item.id}
                 className={`${getClassName(index)}`}
                 onClick={() => setSelectedId(item.id)}
-                initial={{ opacity: 0, y: 20 }} // Initial animation state
+                initial={{ opacity: 0, y: 50 }} // Initial animation state
                 animate={{ opacity: 1, y: 0 }} // Animate to this state
                 exit={{ opacity: 0, y: -20 }} // Exit animation state
                 transition={{ duration: 0.3 }} // Animation duration
@@ -115,7 +127,7 @@ const EventList = () => {
               </motion.li>
             ))}
           </AnimatePresence>
-        </ul>
+        </motion.ul>
         <AnimatePresence>
           {selectedId && (
             <EventCard
