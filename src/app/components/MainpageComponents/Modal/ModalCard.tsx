@@ -3,27 +3,14 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { GalleryItem, PackagePrice } from "@/app/Helpers/galleryItemHelper";
 import { GalleryItems } from "../TeaGallery/galleryItems";
-
+import { RxCross1 } from "react-icons/rx";
+import { url } from "inspector";
 type ModalCardProps = {
   GalleryItem: GalleryItem;
+  closeModal: () => void;
 };
 
-const prices = [
-  {
-    packing: "30 g",
-    price: "3000 Ft",
-  },
-  {
-    packing: "50 g",
-    price: "5000 Ft",
-  },
-  {
-    packing: "100 g",
-    price: "10000 Ft",
-  },
-];
-
-const ModalCard: React.FC<ModalCardProps> = ({ GalleryItem }) => {
+const ModalCard: React.FC<ModalCardProps> = ({ GalleryItem, closeModal }) => {
   const basePrice = GalleryItem.packagePrices[0].price;
   const [price, setPrice] = useState<string>(basePrice);
   const [selectedPacking, setSelectedPacking] = useState<string>("50 g"); // State to track selected packing
@@ -35,15 +22,25 @@ const ModalCard: React.FC<ModalCardProps> = ({ GalleryItem }) => {
 
   return (
     <>
-      <div className="w-[450px] absolute flex justify-center flex-col items-center">
-        <div className="rounded-t-3xl w-full h-[150px] flex justify-center items-center">
-          <Image
-            alt="card picture"
-            src={GalleryItem.picturePath}
-            width={450}
-            height={100}
-            className="rounded-t-3xl max-h-[350px] "
-          />
+      <div className="w-[450px]  absolute flex justify-center flex-col items-center">
+        <div
+          style={{ backgroundImage: `url(${GalleryItem.picturePath})` }}
+          className=" bg-cover rounded-t-3xl w-full h-[200px] flex justify-center items-center"
+        >
+          <motion.div
+            onClick={closeModal}
+            whileHover={{
+              opacity: 1,
+              rotate: 90,
+              color: "black",
+            }}
+            initial={{ opacity: 0.8 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }} // Smooth and faster transitions
+            className="absolute top-4 right-4
+             cursor-pointer w-fit hover:text-white bg-gray-100 rounded-3xl p-1 flex justify-center items-center"
+          >
+            <RxCross1 />
+          </motion.div>
         </div>
         <div className="bg-white rounded-b-3xl w-full p-4">
           <div className="my-5 text-4xl">{GalleryItem.name}</div>

@@ -44,7 +44,7 @@ const Modal: React.FC<ModalProps> = ({ GalleryItem, closeModal }) => {
         animate="visible"
         exit="exit"
       >
-        <ModalCard GalleryItem={GalleryItem} />
+        <ModalCard closeModal={closeModal} GalleryItem={GalleryItem} />
       </motion.div>
     </Backdrop>
   );
