@@ -50,18 +50,18 @@ const Hero = () => {
   const heroTexts = ["TEA", "ÉLMÉNY", "KÖZÖSSÉG"];
 
   return (
-    <div className="relative flex items-center justify-start w-screen h-screen">
+    <div className="relative flex items-center justify-start w-full h-screen">
       <div
         className="absolute inset-0 bg-cover bg-center "
         style={{ backgroundImage: "url('/images/HeroPicture.jpg')" }}
       ></div>
       <div className="flex items-center justify-center w-screen h-screen  ">
-        <div className="relative flex w-screen max-w-[1500px] flex-row flex-grow items-center justify-between h-full ">
-          <div className="h-[400px] flex flex-col justify-center items-start ">
+        <div className="relative flex w-full pl-2 lg:max-w-[1500px] flex-row flex-grow items-center justify-between h-full ">
+          <div className="h-[400px] flex flex-col p-4 justify-center items-start ">
             {heroTexts.map((text, index) => (
               <motion.div
                 key={index}
-                className="text-7xl mb-4 text-white"
+                className="lg:text-7xl pl-2 text-4xl  mb-4 text-white"
                 variants={textVariants(index)}
                 initial="initial"
                 animate="animate"
@@ -70,7 +70,7 @@ const Hero = () => {
               </motion.div>
             ))}
             <motion.div
-              className="text-9xl text-white font-bold flex flex-row"
+              className="lg:text-9xl text-6xl  text-white font-bold flex flex-row"
               variants={teanderVariants}
               initial="initial"
               animate="animate"

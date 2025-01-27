@@ -110,7 +110,7 @@ const EventList = () => {
             },
           }}
           transition={{ duration: 1 }}
-          className="w-[1200px] m-0 grid grid-cols-6 grid-rows-2 gap-4 list-none p-24"
+          className="lg:w-[1200px] min-w-full m-0 grid grid-cols-6 grid-rows-2 gap-4 list-none lg:p-24"
         >
           <AnimatePresence mode="wait">
             {currentItems.map((item, index) => (

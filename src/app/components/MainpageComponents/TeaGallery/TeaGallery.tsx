@@ -76,7 +76,7 @@ export const TeaGallery: React.FC = () => {
   };
 
   return (
-    <div className="relative max-w-[400px] h-screen flex justify-center items-center overflow-hidden">
+    <div className="relative  lg:max-w-[400px] w-screen lg:h-screen  flex justify-center items-center overflow-hidden">
       <AnimatePresence initial={false} custom={direction}>
         <motion.button
           onPointerDown={handlePointerDown}
