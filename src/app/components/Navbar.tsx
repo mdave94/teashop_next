@@ -42,7 +42,7 @@ const Navbar: React.FC = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.3, delay: 0.3 }}
-        className="text-teander fixed z-10 flex justify-center items-center "
+        className="text-teander hidden fixed z-10 md:flex  justify-center items-center  "
       >
         <motion.div className="flex  w-screen flex-row flex-grow items-center h-[5rem] bg-white max-w-[90%] rounded-[50px] mt-10 justify-between  px-[150px]">
           <motion.div className="text-2xl flex  cursor-pointer  flex-row">

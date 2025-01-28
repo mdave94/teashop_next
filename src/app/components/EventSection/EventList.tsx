@@ -84,14 +84,14 @@ const EventList = () => {
 
   const getClassName = (index: number) => {
     const order = [
-      "col-span-2 row-span-1",
-      "col-span-4 row-span-1",
-      "col-span-4 row-span-1",
-      "col-span-2 row-span-1",
-      "col-span-2 row-span-1",
-      "col-span-4 row-span-1",
-      "col-span-4 row-span-1",
-      "col-span-2 row-span-1",
+      "md:col-span-2 md:row-span-1 ",
+      "md:col-span-4 md:row-span-1 ",
+      "md:col-span-4 md:row-span-1 ",
+      "md:col-span-2 md:row-span-1 ",
+      "md:col-span-2 md:row-span-1 ",
+      "md:col-span-4 md:row-span-1 ",
+      "md:col-span-4 md:row-span-1 ",
+      "md:col-span-2 md:row-span-1 ",
     ];
     return order[index % order.length];
   };
@@ -110,13 +110,13 @@ const EventList = () => {
             },
           }}
           transition={{ duration: 1 }}
-          className="lg:w-[1200px] min-w-full m-0 grid grid-cols-6 grid-rows-2 gap-4 list-none lg:p-24"
+          className="lg:w-[1200px] lg:min-w-full m-0  grid grid-cols-2 md:grid md:grid-cols-6 md:grid-rows-2 gap-4 list-none lg:p-24"
         >
           <AnimatePresence mode="wait">
             {currentItems.map((item, index) => (
               <motion.li
                 key={item.id}
-                className={`${getClassName(index)}`}
+                className={`  ${getClassName(index)}`}
                 onClick={() => setSelectedId(item.id)}
                 initial={{ opacity: 0, y: 50 }} // Initial animation state
                 animate={{ opacity: 1, y: 0 }} // Animate to this state

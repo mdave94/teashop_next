@@ -18,11 +18,11 @@ const EventCard: React.FC<EventCardProps> = ({ item, setSelectedId }) => {
   return (
     <>
       <motion.div
-        className="fixed inset-0 z-40 flex items-center justify-center p-20 pointer-events-none"
+        className="fixed inset-0 z-40 flex items-center justify-center p-3 md:p-20 pointer-events-none"
         key="modal"
       >
         <motion.div
-          className="relative overflow-hidden w-full max-w-[500px] min-h-[80vh] max-h-[90vh] bg-white shadow-lg pointer-events-auto will-change-transform rounded-3xl"
+          className="relative overflow-hidden w-full max-w-[500px] min-h-[80vh] max-h-[90vh] bg-white shadow-lg pointer-events-auto will-change-transform rounded-3xl "
           layoutId={item.id.toString()}
         >
           <div

@@ -3,13 +3,13 @@ import { motion } from "framer-motion";
 import TeaGallery from "./TeaGallery/TeaGallery";
 const FirstComponent = () => {
   return (
-    <div className=" bg-green-200 w-full flex flex-row justify-center items-center h-full  ">
+    <div className=" pb-8 bg-green-200 w-full flex flex-row justify-center items-center h-full  ">
       <motion.div
-        initial={{ x: 80 }}
+        initial={{ y: 80, opacity: 0 }}
         viewport={{ once: true, amount: 0.2 }}
         whileInView={{
           opacity: 1,
-          x: 0,
+          y: 0,
           transition: {
             duration: 2,
           },
