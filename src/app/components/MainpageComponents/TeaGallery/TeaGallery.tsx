@@ -98,7 +98,7 @@ export const TeaGallery: React.FC = () => {
           drag="x"
           dragConstraints={{ left: 0, right: 0 }}
           onDragEnd={handleDragEnd}
-          className={`z-10 w-[250px] h-[450px] bg-cover bg-center rounded-3xl ${
+          className={`z-10 w-[250px] md:w-[450px] h-[450px] bg-cover bg-center rounded-3xl ${
             isDragging ? "cursor-grabbing" : "cursor-pointer"
           } `}
         />

@@ -20,7 +20,7 @@ const ModalCard: React.FC<ModalCardProps> = ({ GalleryItem, closeModal }) => {
 
   return (
     <>
-      <div className="w-[450px]  absolute flex justify-center flex-col items-center">
+      <div className="min-w-[80%] absolute flex justify-center flex-col items-center">
         <div
           style={{ backgroundImage: `url(${GalleryItem.picturePath})` }}
           className=" bg-cover rounded-t-3xl w-full h-[200px] flex justify-center items-center"
@@ -56,7 +56,7 @@ const ModalCard: React.FC<ModalCardProps> = ({ GalleryItem, closeModal }) => {
                 <div
                   onClick={() => handleSetPrice(item)}
                   key={item.package}
-                  className={`w-[7rem] rounded-3xl hover:bg-green-200 p-1 cursor-pointer mx-4 ${
+                  className={`md:w-[7rem] rounded-3xl hover:bg-green-200 p-1 cursor-pointer mx-4 ${
                     selectedPacking === item.package
                       ? "bg-green-200"
                       : " bg-green-100" // Default background for unselected items
